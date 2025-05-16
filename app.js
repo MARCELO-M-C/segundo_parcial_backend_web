@@ -10,7 +10,6 @@ const swaggerSpec = require('./src/docs/swagger');
 const cookieParser = require('cookie-parser');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
 app.use(cors({
   origin: 'http://localhost:3000', 
@@ -28,7 +27,7 @@ app.use('/api', cookieRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Iniciar servidor
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
-  console.log(`Swagger disponible en http://localhost:${PORT}/api-docs`);
 });
